@@ -10,10 +10,9 @@ const {userAuth} = require("../middlewares/auth");
 authRouter.post("/login", async (req, res) => {
   try {
     const { emailId, password } = req.body;
-    console.log(req.body)
     
     const user = await User.findOne({ emailId: emailId });
-    console.log(user)
+  
     if (!user) {
       throw new Error("invalid credentials");
     }
@@ -67,4 +66,6 @@ authRouter.post("/logout" , async (req , res)=>{
     })
     res.send();
 })
+
+
 module.exports = authRouter;
